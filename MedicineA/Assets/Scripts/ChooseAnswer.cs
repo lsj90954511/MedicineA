@@ -8,11 +8,13 @@ public class ChooseAnswer : MonoBehaviour
 {
     public GameObject answer1;
     public GameObject answer2;
+    GameObject inventoryDirector;
 
     void Start()
     {
         this.answer1 = GameObject.Find("Answer1");
         this.answer2 = GameObject.Find("Answer2");
+        this.inventoryDirector = GameObject.Find("InventoryDirector");
     }
 
     //첫번째 답 선택 시
@@ -22,6 +24,8 @@ public class ChooseAnswer : MonoBehaviour
         answer1.GetComponent<Button>().interactable = false;//버튼 비활성화
         answer2.GetComponent<Button>().interactable = false;
         MainDirector.money += 1; //돈 +1
+        inventoryDirector.GetComponent<InventoryDirector>().GetNewMeterial();
+        //inventoryDirector.GetComponent<InventoryDirector>().LoseMeterial();   이건 재료 잃을 때
     }
 
     //두번째 답 선택시
