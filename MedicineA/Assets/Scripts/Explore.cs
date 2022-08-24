@@ -7,7 +7,7 @@ public class Explore : MonoBehaviour
 {
     public void SceneChange()
     {
-        int randomValue = Random.Range(1, 2);
+        int randomValue = Random.Range(1, 3);
         SceneManager.LoadScene(randomValue.ToString());
     }
 }
