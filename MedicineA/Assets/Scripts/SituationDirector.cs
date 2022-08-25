@@ -17,11 +17,6 @@ public class SituationDirector : MonoBehaviour
 
     void Start()
     {
-        //하트 찾기
-        this.heart1 = GameObject.Find("Heart1");
-        this.heart2 = GameObject.Find("Heart2");
-        this.heart3 = GameObject.Find("Heart3");
-
         //돈 텍스트 찾기
         this.nowmoney = GameObject.Find("Money");
 
@@ -38,28 +33,11 @@ public class SituationDirector : MonoBehaviour
 
     void Update()
     {
-        //하트 개수에 따라 이미지 나타내기
-        if (MainDirector.heart == 2)
-        {
-            heart3.GetComponent<HeartChange>().ChangeHeart();
-        }
-        else if (MainDirector.heart == 1)
-        {
-            heart3.GetComponent<HeartChange>().ChangeHeart();
-            heart2.GetComponent<HeartChange>().ChangeHeart();
-        }
-        else if (MainDirector.heart == 0)
-        {
-            heart3.GetComponent<HeartChange>().ChangeHeart();
-            heart2.GetComponent<HeartChange>().ChangeHeart();
-            heart1.GetComponent<HeartChange>().ChangeHeart();
-        }
-
         //돈 나타내기
         nowmoney.GetComponent<Text>().text = MainDirector.money.ToString();
 
         //선택지 고른 후에 화면 터치하면 메인 씬으로 이동
-        if (answer1.GetComponent<Button>().interactable == false && answer2.GetComponent<Button>().interactable == false)
+        if (answer1.GetComponent<Button>().interactable == false && answer2.GetComponent<Button>().interactable == false && MainDirector.heart >= 1)
         {
             if (Input.GetMouseButtonDown(0))
                 SceneManager.LoadScene("Main");
